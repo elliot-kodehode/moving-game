@@ -37,36 +37,39 @@ function placeBox() {
   moveBox.style.left = `${position.x}px`;
 }
 // same thing here??? short??? two codes though maybe up or down and left right??? WHY IS HE ESCAPING
+
 function gameLoop() {
   if (pressedKeys.w && position.y > 0) {
     position.y -= step;
   }
-
   if (pressedKeys.a && position.x > 0) {
     position.x -= step;
   }
   if (
     pressedKeys.s &&
-    position.y <= moveContainer.offsetHeight - moveBox.offsetHeight
+    position.y < moveContainer.offsetHeight - moveBox.offsetHeight - step
   ) {
     position.y += step;
+  } else {
   }
   if (
     pressedKeys.d &&
-    position.x < moveContainer.offsetWidth - moveBox.offsetWidth
+    position.x < moveContainer.offsetWidth - moveBox.offsetWidth - step
   ) {
     position.x += step;
   }
+  requestAnimationFrame(gameLoop);
   placeBox();
-  setTimeout(gameLoop);
+  // setTimeout(gameLoop, 10);
+  // setInterval(gameLoop, 100);
 }
 gameLoop();
 
-moveContainer.addEventListener("click", (elem) => {
-  position.x = elem.clientX - moveBox.offsetHeight / 2;
-  position.y = elem.clientY - moveBox.offsetWidth / 2;
-  placeBox();
-});
+// moveContainer.addEventListener("click", (elem) => {
+//   position.x = elem.clientX - moveBox.offsetHeight / 2;
+//   position.y = elem.clientY - moveBox.offsetWidth / 2;
+//   placeBox();
+// });
 
 // Add border so he can't escape IT DIDNT WORK HES ESCAPING
 // make him cute?
