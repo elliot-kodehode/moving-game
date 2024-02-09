@@ -1,0 +1,24 @@
+/** @format */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vh;
+  height: 100vw;
+}
+#move-container {
+  position: relative;
+  height: 624px;
+  width: 1024px;
+  background-color: cadetblue;
+}
+
+#move-box {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(56, 55, 55);
+  position: absolute;
+}
